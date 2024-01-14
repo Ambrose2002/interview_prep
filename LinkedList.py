@@ -17,6 +17,7 @@ class LinkedList:
             current = self.head
             while current is not None:
                 current = current.next 
+                print(type(current))
                 i += 1
                 
         print('LinkedList has {} nodes'.format(i))
@@ -36,7 +37,7 @@ class LinkedList:
         n = self.head
         while n.next is not None:
             n= n.next
-        n.next = new_node;
+        n.next = new_node
         
     
     
@@ -98,7 +99,7 @@ class LinkedList:
                     temp = temp.next
                 
             if temp is not None:
-                while temp.next is not None:
+                if temp.next is not None:
                     temp.next = temp.next.next
                 # print('Position is out of range')
             else:
@@ -132,7 +133,7 @@ ll.pushend(20)
 # ll.removeend()
 # ll.removehead()
 ll.pushafter(200, 3)
-# ll.removeafter(5)
+ll.removeafter(3)
 ll.pushafter(20, 2)
 ll.countNodes()
 ll.printlist()
