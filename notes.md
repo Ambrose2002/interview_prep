@@ -1,4 +1,4 @@
-Sure, here's an extended version of the cheat sheet including how to use each data structure and its methods in Python.
+### **EXTENDED NOTES ON COMMON DSA's IN PYTHON**
 
 ### **Lists**
 - **Initialization**: `lst = [1, 2, 3]`
