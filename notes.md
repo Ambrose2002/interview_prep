@@ -505,7 +505,7 @@ print(distances)  # Output: {'A': 0, 'B': 1, 'C': 4, 'D': 3, 'E': 6, 'F': 5}
 ### **Topological Sort**
 Topological sorting is an algorithm used to order the vertices of a directed acyclic graph (DAG) such that for every directed edge \( uv \), vertex \( u \) comes before vertex \( v \). This is useful in scenarios like scheduling tasks, resolving symbol dependencies in compilers, and more.
 
-### Algorithm for Topological Sort
+#### Algorithm for Topological Sort
 
 There are two common methods to perform a topological sort:
 1. **Kahn’s Algorithm (BFS-based)**
