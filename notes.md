@@ -1,3 +1,192 @@
+Sure, here's an extended version of the cheat sheet including how to use each data structure and its methods in Python.
+
+### **Lists**
+- **Initialization**: `lst = [1, 2, 3]`
+- **Usage**:
+  ```python
+  lst = [1, 2, 3]
+  lst.append(4)  # Add an item to the end of the list
+  lst.extend([5, 6])  # Extend the list by appending elements from the iterable
+  lst.insert(2, 'inserted')  # Insert an item at a given position
+  lst.remove(1)  # Remove the first item with the value 1
+  item = lst.pop()  # Remove and return the last item
+  item = lst.pop(0)  # Remove and return the item at index 0
+  lst.clear()  # Remove all items from the list
+  index = lst.index(2)  # Return the index of the first item with the value 2
+  count = lst.count(3)  # Return the number of times 3 appears in the list
+  lst.sort()  # Sort the list in place
+  lst.reverse()  # Reverse the elements of the list in place
+  length = len(lst)  # Return the number of items in the list
+  ```
+
+### **Tuples**
+- **Initialization**: `tup = (1, 2, 3)`
+- **Usage**:
+  ```python
+  tup = (1, 2, 3)
+  index = tup.index(2)  # Return the index of the first item with the value 2
+  count = tup.count(3)  # Return the number of times 3 appears in the tuple
+  ```
+
+### **Dictionaries**
+- **Initialization**: `d = {'key1': 'value1', 'key2': 'value2'}`
+- **Usage**:
+  ```python
+  d = {'key1': 'value1', 'key2': 'value2'}
+  keys = d.keys()  # Return a view object of all keys
+  values = d.values()  # Return a view object of all values
+  items = d.items()  # Return a view object of all key-value pairs
+  value = d.get('key1', 'default_value')  # Return the value for 'key1', else 'default_value'
+  d['key3'] = 'value3'  # Add or update an item
+  d.update({'key4': 'value4'})  # Update the dictionary with elements from another dictionary
+  value = d.pop('key2', 'default_value')  # Remove the specified key and return the value
+  key, value = d.popitem()  # Remove and return a (key, value) pair
+  d.clear()  # Remove all items from the dictionary
+  ```
+
+### **Sets**
+- **Initialization**: `s = {1, 2, 3}`
+- **Usage**:
+  ```python
+  s = {1, 2, 3}
+  s.add(4)  # Add an element to the set
+  s.remove(2)  # Remove the specified element
+  s.discard(2)  # Remove the specified element without raising an error if not present
+  item = s.pop()  # Remove and return an arbitrary set element
+  s.clear()  # Remove all elements from the set
+  union_set = s.union({5, 6})  # Return a new set with elements from both sets
+  intersection_set = s.intersection({3, 4, 5})  # Return a new set with elements common to both sets
+  difference_set = s.difference({2, 4})  # Return a new set with elements in the set that are not in the others
+  symmetric_difference_set = s.symmetric_difference({3, 4, 5})  # Return a new set with elements in either set but not both
+  ```
+
+### **Strings**
+- **Initialization**: `s = "hello"`
+- **Usage**:
+  ```python
+  s = "hello world"
+  words = s.split()  # Split the string into a list of substrings
+  stripped = s.strip()  # Remove leading and trailing whitespace
+  csv_text = "apple,banana,cherry"
+  fruits = csv_text.split(',')  # Split by a specific delimiter
+  joined = ' '.join(['hello', 'world'])  # Join elements of a list into a single string
+  replaced = s.replace("world", "Python")  # Replace occurrences of substring 'world' with 'Python'
+  index = s.find('world')  # Return the lowest index in the string where substring 'world' is found
+  uppercase = s.upper()  # Convert to uppercase
+  lowercase = s.lower()  # Convert to lowercase
+  titlecase = s.title()  # Convert the first character of each word to uppercase
+  capitalized = s.capitalize()  # Convert the first character to uppercase
+  starts = s.startswith('hello')  # Check if the string starts with 'hello'
+  ends = s.endswith('world')  # Check if the string ends with 'world'
+  ```
+
+### **Deque (from `collections` module)**
+- **Initialization**: `from collections import deque`  
+  `dq = deque([1, 2, 3])`
+- **Usage**:
+  ```python
+  from collections import deque
+  dq = deque([1, 2, 3])
+  dq.append(4)  # Add to the right end
+  dq.appendleft(0)  # Add to the left end
+  item = dq.pop()  # Remove and return an element from the right end
+  item = dq.popleft()  # Remove and return an element from the left end
+  dq.extend([5, 6])  # Extend the right end
+  dq.extendleft([-2, -1])  # Extend the left end
+  dq.clear()  # Remove all elements
+  dq.rotate(1)  # Rotate the deque 1 step to the right
+  dq.rotate(-1)  # Rotate the deque 1 step to the left
+  length = len(dq)  # Get the size of the deque
+  ```
+
+### **Heap (from `heapq` module)**
+- **Initialization**: `import heapq`  
+  `heap = []`
+- **Usage**:
+  ```python
+  import heapq
+  heap = []
+  heapq.heappush(heap, 3)  # Push the value 3 onto the heap
+  heapq.heappush(heap, 1)  # Push the value 1 onto the heap
+  heapq.heappush(heap, 2)  # Push the value 2 onto the heap
+  smallest = heapq.heappop(heap)  # Pop and return the smallest item
+  heapq.heapify([3, 2, 1])  # Transform list into a heap
+  largest_three = heapq.nlargest(3, heap)  # Get 3 largest elements
+  smallest_three = heapq.nsmallest(3, heap)  # Get 3 smallest elements
+  ```
+
+### **Queue (from `queue` module)**
+- **Initialization**: `import queue`  
+  `q = queue.Queue()`
+- **Usage**:
+  ```python
+  import queue
+  q = queue.Queue()
+  q.put(1)  # Put item into the queue
+  q.put(2)
+  item = q.get()  # Remove and return an item from the queue
+  size = q.qsize()  # Get the size of the queue
+  is_empty = q.empty()  # Check if the queue is empty
+  is_full = q.full()  # Check if the queue is full
+  ```
+
+### **Examples**
+
+#### List Example
+```python
+lst = [1, 2, 3]
+lst.append(4)
+print(lst)  # Output: [1, 2, 3, 4]
+```
+
+#### Dictionary Example
+```python
+d = {'a': 1, 'b': 2}
+d['c'] = 3
+print(d)  # Output: {'a': 1, 'b': 2, 'c': 3}
+```
+
+#### Set Example
+```python
+s = {1, 2, 3}
+s.add(4)
+print(s)  # Output: {1, 2, 3, 4}
+```
+
+#### String Example
+```python
+s = "hello world"
+print(s.upper())  # Output: "HELLO WORLD"
+```
+
+#### Deque Example
+```python
+from collections import deque
+dq = deque([1, 2, 3])
+dq.append(4)
+print(dq)  # Output: deque([1, 2, 3, 4])
+```
+
+#### Heap Example
+```python
+import heapq
+heap = [3, 1, 4]
+heapq.heapify(heap)
+print(heap)  # Output: [1, 3, 4]
+heapq.heappush(heap, 2)
+print(heap)  # Output: [1, 2, 4, 3]
+print(heapq.heappop(heap))  # Output: 1
+print(heap)  # Output: [2, 3, 4]
+```
+
+#### Queue Example
+```python
+import queue
+q = queue.Queue()
+q.put(1)
+q.put(2)
+print(q.get())
+
 ### Notes on Trees and Common Algorithms
 
 ### **Trees**
