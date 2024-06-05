@@ -1,4 +1,4 @@
-#GRAPHS
+### **GRAPHS**
 Graphs are data structures that consist of a set of vertices (or nodes) and a set of edges that connect pairs of vertices. Graphs can be directed or undirected. In a directed graph, edges have a direction (going from one vertex to another), whereas in an undirected graph, edges are bidirectional.
 
 ### **Graph Representation**
