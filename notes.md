@@ -502,6 +502,84 @@ distances = dijkstra(graph, 'A')
 print(distances)  # Output: {'A': 0, 'B': 1, 'C': 4, 'D': 3, 'E': 6, 'F': 5}
 ```
 
+### **Dijkstra's Algorithm**
+Topological sorting is an algorithm used to order the vertices of a directed acyclic graph (DAG) such that for every directed edge \( uv \), vertex \( u \) comes before vertex \( v \). This is useful in scenarios like scheduling tasks, resolving symbol dependencies in compilers, and more.
+
+### Algorithm for Topological Sort
+
+There are two common methods to perform a topological sort:
+1. **Kahn’s Algorithm (BFS-based)**
+2. **Depth-First Search (DFS)-based Algorithm**
+
+Here, we'll implement the DFS-based algorithm.
+
+#### DFS-based Algorithm for Topological Sort
+
+The idea is to perform a DFS traversal of the graph. During the traversal, we keep track of the visited nodes, and as we finish exploring a node, we add it to the front of a list (or use a stack). This ensures that nodes with no outgoing edges are processed first.
+
+### Steps
+1. Create a recursive DFS function that marks the current node as visited and recurses for all its adjacent nodes.
+2. Once all adjacent nodes are processed, push the current node onto a stack.
+3. Repeat the process for all nodes in the graph.
+4. The contents of the stack give the topological ordering.
+
+### Implementation in Python
+
+```python
+from collections import defaultdict
+
+class Graph:
+    def __init__(self, vertices):
+        self.graph = defaultdict(list)  # Dictionary containing adjacency List
+        self.V = vertices               # Number of vertices
+
+    def add_edge(self, u, v):
+        self.graph[u].append(v)
+
+    def topological_sort_util(self, v, visited, stack):
+        visited[v] = True  # Mark the current node as visited
+        # Recur for all the vertices adjacent to this vertex
+        for i in self.graph[v]:
+            if not visited[i]:
+                self.topological_sort_util(i, visited, stack)
+        # Push current vertex to stack which stores result
+        stack.insert(0, v)
+
+    def topological_sort(self):
+        visited = [False] * self.V  # Mark all the vertices as not visited
+        stack = []  # Stack to store the result
+
+        # Call the recursive helper function to store Topological Sort starting from all vertices one by one
+        for i in range(self.V):
+            if not visited[i]:
+                self.topological_sort_util(i, visited, stack)
+        
+        return stack
+
+# Usage
+g = Graph(6)
+g.add_edge(5, 2)
+g.add_edge(5, 0)
+g.add_edge(4, 0)
+g.add_edge(4, 1)
+g.add_edge(2, 3)
+g.add_edge(3, 1)
+
+result = g.topological_sort()
+print("Topological Sort of the given graph:")
+print(result)  # Expected Output: [5, 4, 2, 3, 1, 0] or any other valid topological order
+```
+
+### Explanation
+
+1. **Graph Initialization**: We initialize a graph using a `defaultdict` to hold the adjacency list representation of the graph.
+2. **Adding Edges**: The `add_edge` function adds directed edges to the graph.
+3. **DFS Utility Function**: The `topological_sort_util` function performs the DFS traversal. It marks the current node as visited, recurses for all adjacent nodes, and then inserts the current node at the beginning of the stack.
+4. **Topological Sort Function**: The `topological_sort` function initializes the visited list and the stack. It then iterates over all the vertices, calling the DFS utility function for each unvisited node.
+5. **Output**: The stack, which now contains the topological ordering of the vertices, is returned and printed.
+
+This implementation ensures that the vertices are processed in a manner that satisfies the dependencies represented by the directed edges.
+
 ### Summary
 - **BFS**: Uses a queue to explore nodes level by level.
 - **DFS**: Uses a stack (explicit or recursion) to explore as far as possible along each branch.
