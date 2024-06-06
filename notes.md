@@ -584,3 +584,116 @@ This implementation ensures that the vertices are processed in a manner that sat
 - **BFS**: Uses a queue to explore nodes level by level.
 - **DFS**: Uses a stack (explicit or recursion) to explore as far as possible along each branch.
 - **Dijkstra's Algorithm**: Uses a priority queue to find the shortest path in a weighted graph with non-negative weights.
+
+## Data Structures in Python: Space and Time Complexities
+
+### List
+
+- **Initialization**: `list()`, `[]`
+
+#### Time and Space Complexities
+- **Access**: O(1)
+- **Search**: O(n)
+- **Insertion**: O(n)
+- **Deletion**: O(n)
+- **Space Complexity**: O(n)
+
+### Dictionary
+
+- **Initialization**: `dict()`, `{}`
+
+#### Time and Space Complexities
+- **Access**: O(1)
+- **Search**: O(1)
+- **Insertion**: O(1)
+- **Deletion**: O(1)
+- **Space Complexity**: O(n)
+
+### Set
+
+- **Initialization**: `set()`, `{}`
+
+#### Time and Space Complexities
+- **Access**: O(1)
+- **Search**: O(1)
+- **Insertion**: O(1)
+- **Deletion**: O(1)
+- **Space Complexity**: O(n)
+
+### Tuple
+
+- **Initialization**: `tuple()`, `()`
+
+#### Time and Space Complexities
+- **Access**: O(1)
+- **Search**: O(n)
+- **Insertion**: Immutable (not applicable)
+- **Deletion**: Immutable (not applicable)
+- **Space Complexity**: O(n)
+
+### Deque (from collections module)
+
+- **Initialization**: `collections.deque()`
+
+#### Time and Space Complexities
+- **Access**: O(1)
+- **Search**: O(n)
+- **Insertion**: O(1)
+- **Deletion**: O(1)
+- **Space Complexity**: O(n)
+
+### Stack (Using list)
+
+- **Initialization**: `[]`
+
+#### Time and Space Complexities
+- **Access**: O(n)
+- **Search**: O(n)
+- **Insertion**: O(1)
+- **Deletion**: O(1)
+- **Space Complexity**: O(n)
+
+### Queue (Using deque from collections module)
+
+- **Initialization**: `collections.deque()`
+
+#### Time and Space Complexities
+- **Access**: O(n)
+- **Search**: O(n)
+- **Insertion**: O(1)
+- **Deletion**: O(1)
+- **Space Complexity**: O(n)
+
+### Binary Search Tree (BST)
+
+- **Initialization**: Custom implementation
+
+#### Time and Space Complexities
+- **Access**: O(log n) on average, O(n) in the worst case (unbalanced tree)
+- **Search**: O(log n) on average, O(n) in the worst case (unbalanced tree)
+- **Insertion**: O(log n) on average, O(n) in the worst case (unbalanced tree)
+- **Deletion**: O(log n) on average, O(n) in the worst case (unbalanced tree)
+- **Space Complexity**: O(n)
+
+### Heap (using heapq module)
+
+- **Initialization**: `heapq`
+
+#### Time and Space Complexities
+- **Access Min/Max**: O(1)
+- **Insertion**: O(log n)
+- **Deletion**: O(log n)
+- **Space Complexity**: O(n)
+
+### Graph
+
+- **Initialization**: Adjacency list using `defaultdict(list)`
+
+#### Time and Space Complexities
+- **Access**: O(1) for adjacency list
+- **Search (BFS/DFS)**: O(V + E) where V is the number of vertices and E is the number of edges
+- **Insertion (Edge)**: O(1)
+- **Deletion (Edge)**: O(1)
+- **Space Complexity**: O(V + E) for adjacency list
+
+This cheatsheet provides a quick reference for the time and space complexities of common operations for different data structures in Python.
