@@ -585,6 +585,151 @@ This implementation ensures that the vertices are processed in a manner that sat
 - **DFS**: Uses a stack (explicit or recursion) to explore as far as possible along each branch.
 - **Dijkstra's Algorithm**: Uses a priority queue to find the shortest path in a weighted graph with non-negative weights.
 
+## Trie Data Structure in Python
+
+A Trie (pronounced as "try") is a type of search tree used to store a dynamic set or associative array where the keys are usually strings. It is also known as a prefix tree, as it can be searched by prefixes. Here’s a step-by-step guide to implementing a Trie and some common Trie operations.
+
+### Trie Node Class
+
+First, we need a `TrieNode` class to represent each node in the Trie. Each node can have multiple children (one for each character of the alphabet) and a flag to indicate whether the node marks the end of a word.
+
+```python
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+```
+
+### Trie Class
+
+The `Trie` class will contain methods to insert words, search for words, and search for prefixes.
+
+```python
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end_of_word = True
+    
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end_of_word
+    
+    def starts_with(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
+```
+
+### Common Trie Algorithms
+
+1. **Insert a word into the Trie**
+
+    ```python
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end_of_word = True
+    ```
+
+2. **Search for a word in the Trie**
+
+    ```python
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end_of_word
+    ```
+
+3. **Check if any word in the Trie starts with a given prefix**
+
+    ```python
+    def starts_with(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
+    ```
+
+### Full Implementation
+
+Here's the full implementation of the Trie data structure:
+
+```python
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.is_end_of_word = True
+    
+    def search(self, word):
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.is_end_of_word
+    
+    def starts_with(self, prefix):
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
+
+# Example usage
+trie = Trie()
+trie.insert("apple")
+print(trie.search("apple"))   # Output: True
+print(trie.search("app"))     # Output: False
+print(trie.starts_with("app"))  # Output: True
+trie.insert("app")
+print(trie.search("app"))     # Output: True
+```
+
+### Summary
+
+- **TrieNode Class**: Represents each node with a dictionary of children and a boolean flag `is_end_of_word`.
+- **Trie Class**: Contains methods to insert words, search for words, and check for prefixes.
+- **Insert Method**: Adds a word to the Trie.
+- **Search Method**: Checks if a word exists in the Trie.
+- **Starts With Method**: Checks if any word in the Trie starts with a given prefix.
+
+This implementation provides a basic and efficient way to handle a Trie in Python, which can be expanded with more advanced features as needed.
+
 ## Data Structures in Python: Space and Time Complexities
 
 ### List
