@@ -841,6 +841,4 @@ This implementation provides a basic and efficient way to handle a Trie in Pytho
 - **Deletion (Edge)**: O(1)
 - **Space Complexity**: O(V + E) for adjacency list
 
-`blank`
-
 This cheatsheet provides a quick reference for the time and space complexities of common operations for different data structures in Python.
