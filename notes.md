@@ -842,3 +842,89 @@ This implementation provides a basic and efficient way to handle a Trie in Pytho
 - **Space Complexity**: O(V + E) for adjacency list
 
 This cheatsheet provides a quick reference for the time and space complexities of common operations for different data structures in Python.
+
+
+Deleting a node from a Binary Search Tree (BST) involves several steps, depending on the node's position and the number of children it has. Here's a step-by-step guide to implementing the deletion algorithm, followed by the code:
+
+### Deletion Cases
+
+1. **Node with No Children (Leaf Node)**: Simply remove the node from the tree.
+2. **Node with One Child**: Remove the node and replace it with its child.
+3. **Node with Two Children**: Find the in-order successor (the smallest node in the right subtree) or the in-order predecessor (the largest node in the left subtree) to replace the node, and then delete the in-order successor or predecessor.
+
+### Implementation
+
+Here's the Python implementation of the BST deletion algorithm:
+
+```python
+class TreeNode:
+    def __init__(self, value=0, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def delete_node(root, key):
+    if not root:
+        return root
+
+    if key < root.value:
+        root.left = delete_node(root.left, key)
+    elif key > root.value:
+        root.right = delete_node(root.right, key)
+    else:
+        # Node to be deleted found
+        if not root.left:
+            return root.right
+        elif not root.right:
+            return root.left
+
+        # Node with two children
+        # Get the inorder successor (smallest in the right subtree)
+        temp = find_min(root.right)
+        root.value = temp.value
+        root.right = delete_node(root.right, temp.value)
+
+    return root
+
+def find_min(node):
+    current = node
+    while current.left:
+        current = current.left
+    return current
+
+# Example usage:
+# Creating a BST
+root = TreeNode(5)
+root.left = TreeNode(3)
+root.right = TreeNode(8)
+root.left.left = TreeNode(2)
+root.left.right = TreeNode(4)
+root.right.left = TreeNode(7)
+root.right.right = TreeNode(9)
+
+# Deleting a node with value 3
+root = delete_node(root, 3)
+```
+
+### Explanation
+
+1. **TreeNode Class**: Defines a node in the BST, with a `value`, `left` child, and `right` child.
+
+2. **delete_node Function**:
+   - It takes `root` (the root of the tree or subtree) and `key` (the value of the node to be deleted).
+   - The function first searches for the node to delete:
+     - If `key` is less than `root.value`, it recurses on the left subtree.
+     - If `key` is greater than `root.value`, it recurses on the right subtree.
+     - If `key` is equal to `root.value`, the node to delete is found.
+   - Depending on the node's children, the function handles three cases:
+     - **No children**: Returns `None`.
+     - **One child**: Returns the non-null child.
+     - **Two children**: Finds the in-order successor using the `find_min` function, replaces the node's value with the in-order successor's value, and then deletes the in-order successor.
+
+3. **find_min Function**:
+   - This helper function finds the minimum value node in a subtree, which is used to find the in-order successor.
+
+This implementation handles all cases for deleting a node in a BST while maintaining the BST properties.
+
+
+
