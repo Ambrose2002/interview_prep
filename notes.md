@@ -926,5 +926,52 @@ root = delete_node(root, 3)
 
 This implementation handles all cases for deleting a node in a BST while maintaining the BST properties.
 
+To validate a binary search tree (BST) using recursion, you need to ensure that for each node, all values in its left subtree are less than the node's value, and all values in its right subtree are greater than the node's value. Here's a Python implementation:
 
+```python
+class TreeNode:
+    def __init__(self, value=0, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
 
+def is_valid_bst(node, left=float('-inf'), right=float('inf')):
+    # An empty tree is a valid BST
+    if node is None:
+        return True
+
+    # The current node's value must be between the allowed bounds
+    if not (left < node.value < right):
+        return False
+
+    # Recursively validate the left and right subtrees
+    return (is_valid_bst(node.left, left, node.value) and
+            is_valid_bst(node.right, node.value, right))
+
+# Example usage:
+# Creating a valid BST
+root = TreeNode(2)
+root.left = TreeNode(1)
+root.right = TreeNode(3)
+
+print(is_valid_bst(root))  # Output: True
+
+# Creating an invalid BST
+root_invalid = TreeNode(5)
+root_invalid.left = TreeNode(1)
+root_invalid.right = TreeNode(4, TreeNode(3), TreeNode(6))
+
+print(is_valid_bst(root_invalid))  # Output: False
+```
+
+### Explanation:
+
+1. **TreeNode Class**: Defines a simple binary tree node with a value, a left child, and a right child.
+
+2. **is_valid_bst Function**:
+   - It takes a `node` and two boundary values (`left` and `right`) to represent the allowed range of values for the node's value.
+   - It checks if the `node` is `None` (base case) and returns `True` because an empty tree is a valid BST.
+   - It then checks if the current node's value is within the allowed range (`left < node.value < right`). If not, it returns `False`.
+   - It recursively validates the left and right subtrees, updating the bounds: the left subtree's values must be less than the current node's value, and the right subtree's values must be greater than the current node's value.
+
+This implementation efficiently checks the BST property for each node by ensuring that all nodes in the left subtree are less than the node's value and all nodes in the right subtree are greater than the node's value.
